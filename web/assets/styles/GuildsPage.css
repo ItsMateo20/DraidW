@@ -1,0 +1,29 @@
+.guildcard {
+    min-height: 200px;
+    max-height: 200px;
+    min-width: 390px;
+    max-width: 390px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+@media (max-width: 991px) {
+    .guildcard {
+        min-height: 200px;
+        max-height: 200px;
+        min-width: 300px;
+        max-width: 300px;
+        font-size: 20px;
+    }
+
+    .guildavatar {
+        max-height: 70px;
+        max-width: 70px;
+    }
+}
+
+.guildavatar {
+    height: 100px;
+    width: 100px;
+    transition: 0.3s;
+}

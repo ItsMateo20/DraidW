@@ -1,0 +1,390 @@
+html,
+body {
+  height: 100%;
+  font-family: "poppins", sans-serif;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background-color: #262833;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*----------------------------------------Header----------------------------------------*/
+
+.container {
+  flex: 1;
+  margin-bottom: 100px;
+}
+
+.headerText {
+  margin-top: 8%;
+  font-size: 30px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+@media (max-width: 995px) {
+  .headerText {
+    margin-top: 10%;
+    font-size: 20px;
+    text-align: center;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 770px) {
+  .headerText {
+    margin-top: 15%;
+    font-size: 15px;
+    text-align: center;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 350px) {
+  .headerText {
+    margin-top: 30%;
+    font-size: 10px;
+    text-align: center;
+    transition: 0.3s;
+  }
+}
+
+.navbar-logo {
+  position: relative;
+  bottom: 9px;
+}
+
+.dropdown {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.dropdown-menu li a {
+  display: inline;
+}
+
+
+/*----------------------------------------Colors----------------------------------------*/
+
+.quiettext {
+  color: #49516a;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-link:hover,
+.navbar-brand:hover,
+.dropdown-item:hover,
+a:hover {
+  background-color: transparent;
+  color: #32374b;
+  cursor: pointer;
+}
+
+.navbar-dark,
+footer,
+.dropdown-menu-dark {
+  background-color: #20222e;
+  transition: 0.3s;
+}
+
+.nav-link,
+.dropdown-header,
+.navbar-brand,
+.card-text,
+.footer,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: #484e6d;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+
+/*----------------------------------------Cards----------------------------------------*/
+
+.card-columns,
+.card {
+  background-color: #20222e;
+  opacity: 75%;
+  border-radius: 5px;
+  border-color: rgb(33, 36, 49);
+  border-width: 3px;
+  transition: 0.3s;
+}
+
+.card-text .badge {
+  background-color: #484e6d;
+  transition: 0.3s;
+}
+
+.row {
+  margin-left: 5px;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+
+/*----------------------------------------Btns----------------------------------------*/
+
+
+.btnlogindan {
+  color: #da3545;
+  transition: 0.3s;
+}
+
+.btnlogindan:hover {
+  color: #a71d2a;
+}
+
+.disabledbtn {
+  color: #313549;
+  transition: 0.3s;
+}
+
+.btn-outline-secondary {
+  color: #737ca0;
+  border-color: #3a3f57;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: 0.3s;
+}
+
+.btn.btn-outline-secondary.active,
+.btn-outline-secondary:hover {
+  color: #737ca0;
+  background-color: #3a3f57;
+  border-color: #3a3f57;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: 0.3s;
+}
+
+.btnloginsucc {
+  color: #198654;
+  transition: 0.3s;
+}
+
+.btnloginsucc:hover {
+  color: #0b3a24;
+}
+
+
+/*----------------------------------------Random----------------------------------------*/
+
+.wordbreaking {
+  width: 500px;
+  text-align: left;
+  word-wrap: break-word;
+  transition: 0.3s;
+}
+
+.code {
+  white-space: pre-wrap;
+  overflow-y: auto;
+  overflow-x: auto;
+  height: 400px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.centerB {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+
+.divider {
+  width: 100%;
+  border-top: 5px solid #20222e;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/*----------------------------------------Forms----------------------------------------*/
+
+.form-control,
+.form-select {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+  transition: 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+  box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+}
+
+.form-control::placeholder,
+.form-select::placeholder {
+  color: #5e678e;
+  opacity: 50%;
+}
+
+.form-control:focus::placeholder,
+.form-select:focus::placeholder {
+  color: #5e678e;
+  opacity: 50%;
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+}
+
+.form-check-input[type="checkbox"] {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+}
+
+.form-check-input[type="checkbox"]:checked {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+
+}
+
+.form-check-input[type="checkbox"]:focus {
+  background-color: #2c2f3e;
+  border-color: #242632;
+  color: #5e678e;
+  box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+}
+
+
+label {
+  color: #5e678e;
+  transition: 0.3s;
+}
+
+
+/*----------------------------------------Footer----------------------------------------*/
+
+footer {
+  width: 100%;
+  height: 70px;
+  max-height: 70px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+footer a img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+footer a span {
+  font-size: 10px;
+  opacity: 50%;
+  transition: 0.3s;
+}
+
+footer a#terms {
+  margin-left: 1000px;
+  transition: 0.3s;
+}
+
+footer a#privacy {
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+@media (max-width: 1480px) {
+  footer a#terms {
+    margin-left: 400px;
+  }
+
+  footer a#privacy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  footer a#terms {
+    margin-left: 200px;
+  }
+
+  footer a#privacy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 730px) {
+  footer a#terms {
+    margin-left: 80px;
+  }
+
+  footer a#privacy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 580px) {
+  footer a#terms {
+    margin-left: 20px;
+  }
+
+  footer a#privacy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer a#terms {
+    margin-left: 5px;
+  }
+
+  footer a#privacy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  footer a#terms {
+    margin-left: 0px;
+    font-size: 15px;
+  }
+
+  footer a#privacy {
+    margin-left: 5px;
+    font-size: 15px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #373a4a;
+}

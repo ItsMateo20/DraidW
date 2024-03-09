@@ -1,0 +1,49 @@
+.accordion-item {
+    width: 80%;
+    background-color: var(--card-background);
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+    transition: 0.3s;
+}
+
+.accordion-body {
+    background-color: #20222e !important;
+    color: #3e435d;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+    transition: 0.3s;
+}
+
+.accordion-button {
+    opacity: 75%;
+    background-color: #20222e !important;
+    color: #49516a;
+    font-weight: 700;
+    border-radius: 8px !important;
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+    transition: 0.3s;
+}
+
+.accordion-button:not(.collapsed):after {
+    color: #32374b;
+    background-image: var(--bs-accordion-btn-icon);
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+    transition: 0.3s;
+}
+
+
+.accordion-button:not(.collapsed),
+.accordion-button:focus,
+.accordion-button:hover {
+    background-color: #20222e !important;
+    color: #32374b;
+    border-radius: 8px !important;
+    z-index: 3;
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0%);
+    transition: 0.3s;
+}
+
+.changelog-list {
+    margin-top: 2%;
+    margin-left: 20%;
+    transition: 0.3s;
+}

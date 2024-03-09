@@ -1,0 +1,37 @@
+const client = require("../../bot/discord.js").client
+const dashuser = require("../../models/dashuser.js");
+const jwt = require("jsonwebtoken");
+
+module.exports = {
+    name: "Page",
+    url: "/",
+    run: async (req, res) => {
+        delete require.cache[require.resolve("../pages/page.ejs.example")]
+
+        if (!req.cookies.token) return res.redirect("/notloggedin?redirect=" + req.originalUrl)
+        let decoded
+        try {
+            decoded = jwt.verify(req.cookies.token, process.env.JWTSECRET)
+        } catch (e) { }
+        if (!decoded) return res.redirect("/notloggedin?redirect=" + req.originalUrl)
+
+        let data = await dashuser.findOne({ _id: decoded.uuid, userID: decoded.userID })
+        if (!data) return res.redirect("/login?redirect=" + req.originalUrl)
+let userS = await user.findOne({ userID: data.user.id });
+        let admin = false
+        if (userS.draiddevs[0]["developer"] == true && userS.draiddevs[1]["blacklisted"] == false) admin = true
+                    let args = {
+                body: [`Page | Draid`],
+                avatar: `https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}.png`,
+                username: data.user.username,
+                globalname: data.user.globalname,
+                id: data.user.id,
+                
+
+                admin: admin,
+                loggedIn: true,
+            }
+
+        res.render("../pages/page.ejs.example", args)
+    }
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-P54VCBX');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<%= guild.avatar %>" type="image/x-icon">
+    <meta name="copyright" content="Draid">
+    <meta name="language" content="EN, PL">
+    <meta name="author" content="ItsMateo20, itsmateo20@gmail.com and Waret, draidbusiness@gmail.com">
+    <meta name="owner" content="ItsMateo20">
+    <meta name="designer" content="ItsMateo20">
+    <title>
+      <%= body[0] %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+    <link rel="stylesheet" href="../assets/styles/GuildPage.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <%- include('../partials/header.ejs') %>
+        <div class="headerText">
+          <h1 style="font-size: 50px;">
+            <%= guild.name %>'s Dashboard
+          </h1>
+          <h4 style="font-size: 20px;">Change the settings of this guild.</h4>
+          <input id="save" type="button" class="btn btn-outline-danger" onclick="SaveData()" value="Save changes" />
+          <a href="/dashboard/guilds" class="btn btn-outline-secondary" id="backbtn">Back to servers</a>
+          <a class="btn btn-outline-secondary d-none" id="settingsbtn" onclick="openmenu(dashboard)">Back to list</a>
+          <% if (success) { %>
+            <h5 class="text-success" style="font-size: 15px;">Settings updated successfully</h5>
+            <% } else if (success==false && errormsg !=="No error." ) { %>
+              <h5 class="text-danger" style="font-size: 15px;">
+                <%= errormsg %>
+              </h5>
+              <% } %>
+        </div>
+        <div class="divider mt-3"></div>
+
+        <div id="dashboard">
+          <div class="row align-content-center">
+            <div class="card mt-3 m-auto">
+              <div class="card-body">
+                <h5 class="card-title">Main settings</h5>
+                <p class="card-text">Settings like prefix can be found here.</p>
+                <button class="btn btn-outline-secondary" type="button" onclick="openmenu(settings)">
+                  Show settings!
+                </button>
+              </div>
+            </div>
+            <div class="card mt-3 m-auto">
+              <div class="card-body">
+                <h5 class="card-title">Command settings</h5>
+                <p class="card-text">Toggle off and on commands</p>
+                <button class="btn btn-outline-secondary" type="button" onclick="openmenu(cmdsettings)">
+                  Show settings!
+                </button>
+              </div>
+            </div>
+            <div class="card mt-3 m-auto">
+              <div class="card-body">
+                <h5 class="card-title">Welcome settings</h5>
+                <p class="card-text">Welcome message, roles, channels</p>
+                <button class="btn btn-outline-secondary" type="button" onclick="openmenu(wlcsettings)">
+                  Show settings!
+                </button>
+              </div>
+            </div>
+            <div class="card mt-3 m-auto">
+              <div class="card-body">
+                <h5 class="card-title">Music settings</h5>
+                <p class="card-text">Djrole, notifications</p>
+                <button class="btn btn-outline-secondary" type="button" onclick="openmenu(musicsettings)">
+                  Show settings!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form id="SendNewData" action="/dashboard/<%= guild.id %>" method="POST">
+          <div class="d-none" id="settings">
+            <div class="container mt-3">
+              <div class="d-inline">
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Change prefix</h5>
+                    <div class="mb-3">
+                      <input class="form-control" id="prefix" name="prefix"
+                        placeholder="<%= guild.settings.settings[3]['prefix'] %>"
+                        value="<%= guild.settings.settings[3]['prefix'] %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <h5 class="card-title">Disable command channels </br><span class="quiettext"
+                        style="font-size: small;">(ctrl+click if on computer)</span></h5>
+                    <div class="mb-3">
+                      <select class="form-control custom-select" multiple="" size="7" id="disallowedcommandchannels"
+                        name="disallowedcommandchannels">
+                        <option value="none">None</option>
+                        <% for (let i=0; i < guild.channels.textcount; i++) { %>
+                          <% if (
+                            guild.settings.settings[3]['disallowedcommandchannels'].includes(guild.channels.text[i].id))
+                            { %>
+                            <option value="<%= guild.channels.text[i].id %>" selected>
+                              <%= guild.channels.text[i].name %>
+                            </option>
+                            <% } else { %>
+                              <option value="<%= guild.channels.text[i].id %>">
+                                <%= guild.channels.text[i].name %>
+                              </option>
+                              <% } %>
+                                <% } %>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none" id="cmdsettings">
+            <div class="container mt-3">
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Currency commands</h5>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <% if (guild.settings.settings[2]['currency']==false) { %>
+                        <input class="form-check-input" type="checkbox" role="switch" name="currency" id="currency">
+                        <% } else { %>
+                          <input class="form-check-input" type="checkbox" role="switch" name="currency" id="currency"
+                            checked>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Music commands</h5>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <% if (guild.settings.settings[2]['music']==false) { %>
+                        <input class="form-check-input" type="checkbox" role="switch" name="music" id="music">
+                        <% } else { %>
+                          <input class="form-check-input" type="checkbox" role="switch" name="music" id="music" checked>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none" id="wlcsettings">
+            <div class="container mt-3">
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Welcome functions</h5>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <% if (guild.settings.settings[0]['welcome']==false) { %>
+                        <input class="form-check-input" type="checkbox" role="switch" name="welcome" id="welcome">
+                        <% } else { %>
+                          <input class="form-check-input" type="checkbox" role="switch" name="welcome" id="welcome"
+                            checked>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider mt-3"></div>
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Change welcome message</h5>
+                  <h6 for="welcomemessage" class="form-label">
+                    {nextLine} - Moves text to a new line<br>
+                    {user_displayName} - User display name<br>
+                    {user_name} - User name<br>
+                    {user_id} - User ID<br>
+                    {server_name} - Server name<br>
+                    {server_member_count} - Server member count<br>
+                    {server_id} - Server ID<br>
+                  </h6>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" maxlength="1000" id="welcomemessage" name="welcomemessage"
+                      placeholder="<%= guild.settings.settings[0][" welcomemessage"] %>" value="<%=
+                      guild.settings.settings[0]["welcomemessage"] %>">
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Welcome message alert channel </h5>
+                  <h6 for="welcomedm" class="form-label">DM channel - Users having direct-messages off will not get the
+                    message</h6>
+                  <div class="form-check form-switch">
+                    <% if (guild.settings.settings[0]['welcomedmTF']==false) { %>
+                      <input class="form-check-input" type="checkbox" role="switch" name="welcomedmTF" id="welcomedmTF"
+                        <%=welcomefunctions%>>
+                      <% } else { %>
+                        <input class="form-check-input" type="checkbox" role="switch" name="welcomedmTF"
+                          id="welcomedmTF" checked <%=welcomefunctions%>>
+                        <% } %>
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <h6 for="welcomechannel" class="form-label">Server channel</h6>
+                    <select class="form-control custom-select" size="7" id="welcomechannel" name="welcomechannel"
+                      <%=welcomefunctions%>
+                      <%=welcomedm%>>
+                        <option value="none">None</option>
+                        <% for (let i=0; i < guild.channels.textcount; i++) { %>
+                          <% if ( guild.settings.settings[0]['welcomechannel']==guild.channels.text[i].id) { %>
+                            <option value="<%= guild.channels.text[i].id %>" selected>
+                              <%= guild.channels.text[i].name %>
+                            </option>
+                            <% } else { %>
+                              <option value="<%= guild.channels.text[i].id %>">
+                                <%= guild.channels.text[i].name %>
+                              </option>
+                              <% } %>
+                                <% } %>
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Role give on join</h5>
+                  <div class="mb-3">
+                    <select class="form-control custom-select" size="7" id="welcomerole" name="welcomerole"
+                      <%=welcomefunctions%>>
+                      <option value="none">None</option>
+                      <% for (let i=0; i < guild.rolecount; i++) { %>
+                        <% if ( guild.settings.settings[0]['welcomerole']==guild.role[i].id) { %>
+                          <option value="<%= guild.role[i].id %>" selected>
+                            <%= guild.role[i].name %>
+                          </option>
+                          <% } else { %>
+                            <option value="<%= guild.role[i].id %>">
+                              <%= guild.role[i].name %>
+                            </option>
+                            <% } %>
+                              <% } %>
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none" id="musicsettings">
+            <div class="container mt-3">
+              <div class="card mt-3 m-auto" style="width: 99%;">
+                <div class="card-body">
+                  <h5 class="card-title">Song notification</h5>
+                  <div class="mb-3">
+                    <div class="form-check form-switch">
+                      <% if (guild.settings.settings[4]['notifysongs']==false) { %>
+                        <input class="form-check-input" type="checkbox" role="switch" name="notifysongs"
+                          id="notifysongs">
+                        <% } else { %>
+                          <input class="form-check-input" type="checkbox" role="switch" name="notifysongs"
+                            id="notifysongs" checked>
+                          <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P54VCBX" height="0" width="0"
+          style="display:none;visibility:hidden"></iframe></noscript>
+  </body>
+
+  <script>
+    function openmenu(args) {
+      let menu = args.id
+      let menus = ["settings", "wlcsettings", "cmdsettings", "musicsettings"]
+      let menubackbtns = ["settingsbtn", "backbtn"]
+      if (menu == "dashboard") {
+        document.getElementById("dashboard").classList.remove("d-none")
+        for (let i = 0; i < menubackbtns.length; i++) {
+          if (document.getElementById(menubackbtns[i]).classList.contains("d-none")) {
+            document.getElementById(menubackbtns[i]).classList.remove("d-none")
+          } else {
+            document.getElementById(menubackbtns[i]).classList.add("d-none")
+          }
+        }
+        for (let i = 0; i < menus.length; i++) {
+          if (!document.getElementById(menus[i]).classList.contains("d-none")) {
+            document.getElementById(menus[i]).classList.add("d-none")
+          }
+        }
+      } else {
+        document.getElementById("settingsbtn").classList.remove("d-none");
+        document.getElementById("backbtn").classList.add("d-none");
+        document.getElementById("dashboard").classList.add("d-none");
+        for (let i = 0; i < menus.length; i++) {
+          if (menus[i] == menu) {
+            document.getElementById(menus[i]).classList.remove("d-none")
+            document.location.href = "#" + menus[i]
+          } else {
+            document.getElementById(menus[i]).classList.add("d-none")
+          }
+        }
+      }
+    }
+  </script>
+
+  <script>
+    const welcome = document.getElementById('welcome');
+    const welcomedm = document.getElementById('welcomedmTF');
+    const welcomechannel = document.getElementById('welcomechannel');
+    const welcomerole = document.getElementById('welcomerole');
+
+    const welcome2 = [welcomedm, welcomechannel, welcomerole];
+
+    welcome.addEventListener('change', () => {
+      if (welcome.checked) {
+        for (const el of welcome2) {
+          if (el !== welcomechannel) {
+            el.disabled = false
+          } else if (el == welcomechannel && welcomedm.checked) {
+            welcomechannel.disabled = true
+          } else {
+            welcomechannel.disabled = false
+          }
+        }
+      } else {
+        for (const el of welcome2) {
+          if (el !== welcomechannel) {
+            el.disabled = true
+          } else if (el == welcomechannel && welcomedm.checked) {
+            welcomechannel.disabled = true
+          } else {
+            welcomechannel.disabled = true
+          }
+        }
+      }
+    });
+
+    welcomedm.addEventListener('change', () => {
+      if (welcomedm.checked) {
+        welcomechannel.disabled = true;
+      } else {
+        welcomechannel.disabled = false;
+      }
+    });
+  </script>
+
+  <script>
+    const inputs = document.querySelectorAll("input, select, option");
+    for (const el of inputs) {
+      el.oldValue = el.value + el.checked;
+    }
+
+    var setEnabled;
+    (setEnabled = function () {
+      var e = true;
+      for (const el of inputs) {
+        if (el.oldValue != el.value + el.checked) {
+          e = false;
+          break;
+        }
+      }
+      document.getElementById("save").disabled = e;
+    })();
+
+    document.oninput = setEnabled;
+    document.onchange = setEnabled; 
+  </script>
+
+  <script>
+    function SaveData() {
+      document.getElementById("SendNewData").submit();
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+</html>

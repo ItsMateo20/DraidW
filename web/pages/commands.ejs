@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-P54VCBX');</script>
+        <!-- End Google Tag Manager -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="Fun, Moderation and More" />
+        <meta name="description" content="The commands page of Draid" />
+        <meta name="copyright" content="Draid">
+        <meta name="language" content="EN, PL">
+        <meta name="author" content="ItsMateo20, itsmateo20@gmail.com and Waret, draidbusiness@gmail.com">
+        <meta name="owner" content="ItsMateo20">
+        <meta name="designer" content="ItsMateo20">
+        <meta name="og:title" content=<%=body[0] %> />
+        <meta name="og:type" content="Website" />
+        <meta name="og:url" content="https://draid.vercel.app/commmands" />
+        <meta name="og:image" content="https://i.imgur.com/T2XP7w9.png" />
+        <meta name="og:site_name" content="Draid" />
+        <meta name="og:description" content="The commands page of Draid" />
+        <link rel="icon" href="../assets/images/BigExclaminationMark.png" type="image/x-icon">
+        <title>
+            <%= body[0] %>
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" href="../assets/styles/Main.css">
+        <link rel="stylesheet" href="../assets/styles/CommandPage.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/header.ejs') %>
+                <div class="headerText">
+                    <h1 style="font-size: 50px;">Commands</h1>
+                    <h4 style="font-size: 20px;">All of the commands that the bot offers</h4>
+                </div>
+                <div class="divider"></div>
+                <div class="d-grid gap-2 d-md-flex text-center text-white mt-3 categories">
+                    <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtnAll"
+                        type="button">All</button>
+                    <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn0"
+                        type="button">Currency</button>
+                    <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn1"
+                        type="button">Music</button>
+                    <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn2"
+                        type="button">Moderation</button>
+                    <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn3"
+                        type="button">Fun</button>
+                    <% if (loggedIn && developer) { %>
+                        <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtnDev"
+                            type="button">Developer</button>
+                        <% } %>
+                            <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn4"
+                                type="button">Games</button>
+                            <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn5"
+                                type="button">Settings</button>
+                            <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn6"
+                                type="button">Slash commands</button>
+                            <button class="btn btn-outline-secondary" onclick="active(this)" id="CategoryBtn7"
+                                type="button">Others</button>
+                </div>
+                <div class="divider mt-3"></div>
+                <div class="mt-4"></div>
+                <div class="commands-section" id="Category0">
+                    <!-- Currency -->
+                    <div class="accordion accordion-flush mt-2" id="balance">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fbalance"> ,balance </button>
+                            </h2>
+                            <div id="fbalance" class="accordion-collapse collapse" data-bs-parent="#balance">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Check your balance or
+                                            somebodies.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,balance [@user/ID]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,balance @ItsMateo20#1001</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="beg">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fbeg">
+                                    ,beg </button>
+                            </h2>
+                            <div id="fbeg" class="accordion-collapse collapse" data-bs-parent="#beg">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Beg people for money.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,beg</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="buy">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fbuy">
+                                    ,buy </button>
+                            </h2>
+                            <div id="fbuy" class="accordion-collapse collapse" data-bs-parent="#buy">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Buy something from the shop by
+                                            ID.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,buy {itemID}</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,buy 2</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="give">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fgive"> ,give </button>
+                            </h2>
+                            <div id="fgive" class="accordion-collapse collapse" data-bs-parent="#give">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Give items to a member.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,give {@user/ID} {itemID}</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,give @Waret#1567 2</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="inventory">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#finventory"> ,inventory </button>
+                            </h2>
+                            <div id="finventory" class="accordion-collapse collapse" data-bs-parent="#inventory">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Shows your inventory or
+                                            somebodies
+                                            elses.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,inventory [@user/ID]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,inventory @ItsMateo20#1001</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="sell">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fsell"> ,sell </button>
+                            </h2>
+                            <div id="fsell" class="accordion-collapse collapse" data-bs-parent="#sell">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Sell an item from your inventory
+                                            by
+                                            itemID.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,sell [itemID]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,sell 2</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="shop">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fshop"> ,shop </button>
+                            </h2>
+                            <div id="fshop" class="accordion-collapse collapse" data-bs-parent="#shop">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Shows the shop full of
+                                            items.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,shop</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="work">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fwork"> ,work </button>
+                            </h2>
+                            <div id="fwork" class="accordion-collapse collapse" data-bs-parent="#work">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Work to get more money.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">1 Day</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">12 Hours</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,work</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commands-section" id="Category1">
+                    <!-- Music -->
+                    <div class="accordion accordion-flush mt-2" id="join">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fjoin"> ,join </button>
+                            </h2>
+                            <div id="fjoin" class="accordion-collapse collapse" data-bs-parent="#join">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Makes the bot join the channel
+                                            you
+                                            are in.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,join</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="filter">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#ffilter"> ,clearqueue </button>
+                            </h2>
+                            <div id="ffilter" class="accordion-collapse collapse" data-bs-parent="#filter">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to clear
+                                            the
+                                            queue of the player.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,clearqueue</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="loop">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#floop"> ,loop </button>
+                            </h2>
+                            <div id="floop" class="accordion-collapse collapse" data-bs-parent="#loop">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to loop
+                                            the
+                                            same song over and over.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,loop
+                                            [(queue/playlist)/(track/song)/none]</span>
+                                    </p>
+                                    <p>
+                                        <b>1. Example:</b> <span class="text-danger">,loop queue</span>
+                                        <b>2. Example:</b> <span class="text-danger">,loop playlist</span>
+                                        <b>3. Example:</b> <span class="text-danger">,loop track</span>
+                                        <b>4. Example:</b> <span class="text-danger">,loop song</span>
+                                        <b>5. Example:</b> <span class="text-danger">,loop none</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="lyrics">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#flyrics"> ,lyrics </button>
+                            </h2>
+                            <div id="flyrics" class="accordion-collapse collapse" data-bs-parent="#lyrics">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Get the lyrics for the
+                                            playing/requested song title.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,lyrics [song title]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,lyrics Never gonna give you up by
+                                            Rick
+                                            Ashley</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="nowplaying">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fnowplaying"> ,nowplaying </button>
+                            </h2>
+                            <div id="fnowplaying" class="accordion-collapse collapse" data-bs-parent="#nowplaying">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to see
+                                            what
+                                            song is playing right now.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,nowplaying</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="pause">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fpause"> ,pause </button>
+                            </h2>
+                            <div id="fpause" class="accordion-collapse collapse" data-bs-parent="#pause">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to pause
+                                            a
+                                            song.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">[cooldown]</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">[voted cooldown]</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,pause</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="play">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fplay"> ,play </button>
+                            </h2>
+                            <div id="fplay" class="accordion-collapse collapse" data-bs-parent="#play">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to play a
+                                            song.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,play {Song name/URL}</span>
+                                    </p>
+                                    <p>
+                                        <b>1. Example:</b> <span class="text-danger">,play Rick Roll</span>
+                                        <b>2. Example:</b> <span class="text-danger">,play
+                                            https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="queue">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fqueue"> ,queue </button>
+                            </h2>
+                            <div id="fqueue" class="accordion-collapse collapse" data-bs-parent="#queue">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to see
+                                            the
+                                            list of songs that are about to play.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,queue</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="resume">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fresume"> ,resume </button>
+                            </h2>
+                            <div id="fresume" class="accordion-collapse collapse" data-bs-parent="#resume">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to resume
+                                            a
+                                            song.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,resume</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="shuffle">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fshuffle"> ,shuffle </button>
+                            </h2>
+                            <div id="fshuffle" class="accordion-collapse collapse" data-bs-parent="#shuffle">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to
+                                            shuffle
+                                            the songs around.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,shuffle</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="skip">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fskip"> ,skip </button>
+                            </h2>
+                            <div id="fskip" class="accordion-collapse collapse" data-bs-parent="#skip">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to skip a
+                                            song.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,skip</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="back">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fback"> ,back </button>
+                            </h2>
+                            <div id="fback" class="accordion-collapse collapse" data-bs-parent="#back">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to play a
+                                            song that already played.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,back</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="stop">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fstop"> ,stop </button>
+                            </h2>
+                            <div id="fstop" class="accordion-collapse collapse" data-bs-parent="#stop">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to stop
+                                            the
+                                            music.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,stop</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="volume">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fvolume"> ,volume </button>
+                            </h2>
+                            <div id="fvolume" class="accordion-collapse collapse" data-bs-parent="#volume">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">This command allows you to change
+                                            the
+                                            volume of the music.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,volume [0/100]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,volume 50</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commands-section" id="Category2">
+                    <!-- Moderation -->
+                    <div class="accordion accordion-flush mt-2" id="ban">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fban">
+                                    ,ban </button>
+                            </h2>
+                            <div id="fban" class="accordion-collapse collapse" data-bs-parent="#ban">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Bans a member from the
+                                            server.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Ban Members</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,ban {@user/ID} [reason]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,ban @ItsMateo20#1001 Annoying</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="unban">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#funban"> ,unban </button>
+                            </h2>
+                            <div id="funban" class="accordion-collapse collapse" data-bs-parent="#unban">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Unbans a member from the
+                                            server.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Ban Members</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,unban {ID} [reason]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,ban 630812692659044352 Not annoying
+                                            anymore! :D</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="kick">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fkick"> ,kick </button>
+                            </h2>
+                            <div id="fkick" class="accordion-collapse collapse" data-bs-parent="#kick">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Kick a member from the
+                                            server.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Kick members</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,kick {@user/ID} [reason]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,kick @Waret#1567 We dont need you
+                                            anymore!</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="mute">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fmute"> ,mute </button>
+                            </h2>
+                            <div id="fmute" class="accordion-collapse collapse" data-bs-parent="#mute">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Mute a member for a set
+                                            time.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Timeout members</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,mute {@user/ID} {time} [reason]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,mute @Waret#1567 1day Not being a
+                                            good
+                                            developer!</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="warn">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fwarn"> ,warn </button>
+                            </h2>
+                            <div id="fwarn" class="accordion-collapse collapse" data-bs-parent="#warn">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Warn a member for doing stuff
+                                            he/she
+                                            shouldn't do.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Manage server</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,warn {@user/ID} [reason]</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,warn @Waret#1567 Sending nsfw in
+                                            #general!</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="clear">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fclear"> ,clear </button>
+                            </h2>
+                            <div id="fclear" class="accordion-collapse collapse" data-bs-parent="#clear">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Clear messages to a set
+                                            amount.</span>
+                                        <b>Permissions:</b> <span class="text-warning">Manage messages</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,clear {amount 1/100}</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,clear 21</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commands-section" id="Category3">
+                    <!-- Fun -->
+                    <div class="accordion accordion-flush mt-2" id="avatar">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#favatar"> ,avatar </button>
+                            </h2>
+                            <div id="favatar" class="accordion-collapse collapse" data-bs-parent="#avatar">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Display avatar.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,avatar [@user]</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="meme">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fmeme"> ,meme </button>
+                            </h2>
+                            <div id="fmeme" class="accordion-collapse collapse" data-bs-parent="#meme">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Display a random meme.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,meme</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="notifications">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fnotifications"> ,notifications </button>
+                            </h2>
+                            <div id="fnotifications" class="accordion-collapse collapse"
+                                data-bs-parent="#notifications">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Display notifications.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,notifications</span>
+                                    </p>
+                                    <p>
+                                        <b>1. Example:</b> <span class="text-danger">,notifications clear 4</span>
+                                        <b>2. Example:</b> <span class="text-danger">,notifications clear all</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="achievements">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fachievements"> ,achievements </button>
+                            </h2>
+                            <div id="fachievements" class="accordion-collapse collapse" data-bs-parent="#achievements">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Gives you some fun achievements
+                                            to
+                                            do.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,achievements</span>
+                                    </p>
+                                    <p>
+                                        <b>1. Example:</b> <span class="text-danger">,achievements claim all</span>
+                                        <b>2. Example:</b> <span class="text-danger">,achievements add 4</span>
+                                        <b>3. Example:</b> <span class="text-danger">,achievements remove 4</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-flush mt-2" id="afk">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#fafk">
+                                    ,afk </button>
+                            </h2>
+                            <div id="fafk" class="accordion-collapse collapse" data-bs-parent="#afk">
+                                <div class="accordion-body rounded">
+                                    <p>
+                                        <b>Description:</b> <span class="text-warning">Makes a user afk.</span>
+                                    </p>
+                                    <p>
+                                        <b>Cooldown:</b> <span class="text-success">4s</span>
+                                        <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                    </p>
+                                    <p>
+                                        <b>Usage:</b> <span class="text-danger">,afk</span>
+                                    </p>
+                                    <p>
+                                        <b>Example:</b> <span class="text-danger">,afk Sleeping</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% if (loggedIn && developer) { %>
+                    <div class="commands-section" id="CategoryDev">
+                        <!-- Developer  -->
+                        <div class="accordion accordion-flush mt-2" id="leave">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fleave"> ,leave </button>
+                                </h2>
+                                <div id="fleave" class="accordion-collapse collapse" data-bs-parent="#leave">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Leaves the server.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,leave</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="restart">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#frestart"> ,restart </button>
+                                </h2>
+                                <div id="frestart" class="accordion-collapse collapse" data-bs-parent="#restart">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Restarts the bot.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">1m</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">30s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,restart</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="sayembed">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fsayembed"> ,sayembed </button>
+                                </h2>
+                                <div id="fsayembed" class="accordion-collapse collapse" data-bs-parent="#sayembed">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Sends a embed message that
+                                                the
+                                                user has typed.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,sayembed {message}</span>
+                                        </p>
+                                        <p>
+                                            <b>Example:</b> <span class="text-danger">,sayembed hello world!</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="saymsg">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fsaymsg"> ,saymsg </button>
+                                </h2>
+                                <div id="fsaymsg" class="accordion-collapse collapse" data-bs-parent="#saymsg">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Sends a message that the user
+                                                has
+                                                typed.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,saymsg {message}</span>
+                                        </p>
+                                        <p>
+                                            <b>Example:</b> <span class="text-danger">,saymsg hello world!</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="saylink">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fsaylink"> ,saylink </button>
+                                </h2>
+                                <div id="fsaylink" class="accordion-collapse collapse" data-bs-parent="#saylink">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Sends a embed title link that
+                                                the
+                                                user has typed.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,saylink {link} {message}</span>
+                                        </p>
+                                        <p>
+                                            <b>Example:</b> <span class="text-danger">,saylink https://discord.com This
+                                                is
+                                                Discord</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="blacklist">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fblacklist"> ,blacklist </button>
+                                </h2>
+                                <div id="fblacklist" class="accordion-collapse collapse" data-bs-parent="#blacklist">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Blacklists a user/server from
+                                                using Draid.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,blacklist</span>
+                                        </p>
+                                        <p>
+                                            <b>1. Example:</b> <span class="text-danger">,blacklist user
+                                                434669571685744662
+                                                off </span>
+                                            <b>2. Example:</b> <span class="text-danger">,blacklist server
+                                                831828880016408637 on </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mt-2" id="debug">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#fdebug"> ,debug </button>
+                                </h2>
+                                <div id="fdebug" class="accordion-collapse collapse" data-bs-parent="#debug">
+                                    <div class="accordion-body rounded">
+                                        <p>
+                                            <b>Description:</b> <span class="text-warning">Used for debugging
+                                                Draid.</span>
+                                        </p>
+                                        <p>
+                                            <b>Cooldown:</b> <span class="text-success">4s</span>
+                                            <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                        </p>
+                                        <p>
+                                            <b>Usage:</b> <span class="text-danger">,debug</span>
+                                        </p>
+                                        <p>
+                                            <b>1. Example:</b> <span class="text-danger">,debug database add
+                                                server</span>
+                                            </br>
+                                            <b>2. Example:</b> <span class="text-danger">,debug database add user
+                                                630812692659044352</span> </br>
+                                            <b>3. Example:</b> <span class="text-danger">,debug database remove user
+                                                630812692659044352</span> </br>
+                                            <b>4. Example:</b> <span class="text-danger">,debug database get user
+                                                630812692659044352</span> </br>
+                                            <b>5. Example:</b> <span class="text-danger">,debug database add serveruser
+                                                630812692659044352</span> </br>
+                                            <b>6. Example:</b> <span class="text-danger">,debug database remove
+                                                serveruser
+                                                630812692659044352</span> </br>
+                                            <b>7. Example:</b> <span class="text-danger">,debug database get serveruser
+                                                630812692659044352</span> </br>
+                                            <b>8. Example:</b> <span class="text-danger">,debug test</span> </br>
+                                            <b>9. Example:</b> <span class="text-danger">,debug activity reset</span>
+                                            </br>
+                                            <b>10. Example:</b> <span class="text-danger">,debug activity hello
+                                                world</span>
+                                            </br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                        <div class="commands-section" id="Category4">
+                            <!-- Games -->
+                            <div class="accordion accordion-flush mt-2" id="coinflip">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fcoinflip"> ,coinflip </button>
+                                    </h2>
+                                    <div id="fcoinflip" class="accordion-collapse collapse" data-bs-parent="#coinflip">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Flip a coin.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,coinflip</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="snake">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fsnake"> ,snake </button>
+                                    </h2>
+                                    <div id="fsnake" class="accordion-collapse collapse" data-bs-parent="#snake">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Play snake.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,snake</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commands-section" id="Category5">
+                            <!-- Settings -->
+                            <div class="accordion accordion-flush mt-2" id="dashboard">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fdashboard"> ,dashboard </button>
+                                    </h2>
+                                    <div id="fdashboard" class="accordion-collapse collapse"
+                                        data-bs-parent="#dashboard">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Sends a link to the
+                                                    servers
+                                                    dashboard.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,dashboard</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="ticket">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fticket"> ,ticket </button>
+                                    </h2>
+                                    <div id="fticket" class="accordion-collapse collapse" data-bs-parent="#ticket">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Creates a ticket
+                                                    channel.</span>
+                                                <b>Permissions:</b> <span class="text-warning">[all of the permissions
+                                                    (Manage Servers)]</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,ticket</span>
+                                            </p>
+                                            <p>
+                                                <b>1. Example:</b> <span class="text-danger">,ticket set channel
+                                                    #ticket/{the id}</span>
+                                                <b>2. Example:</b> <span class="text-danger">,ticket set role @role/{the
+                                                    id}</span>
+                                                <b>3. Example:</b> <span class="text-danger">,ticket
+                                                    claim/unclaim</span>
+                                                <b>4. Example:</b> <span class="text-danger">,ticket close</span>
+                                                <b>5. Example:</b> <span class="text-danger">,ticket reset</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="prefix">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fprefix"> ,prefix </button>
+                                    </h2>
+                                    <div id="fprefix" class="accordion-collapse collapse" data-bs-parent="#prefix">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Sets the bot's prefix for
+                                                    the
+                                                    server.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,prefix {prefix}</span>
+                                            </p>
+                                            <p>
+                                                <b>Example:</b> <span class="text-danger">,prefix !</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="server">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fserver"> ,server </button>
+                                    </h2>
+                                    <div id="fserver" class="accordion-collapse collapse" data-bs-parent="#server">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Displays the server
+                                                    settings.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,server</span>
+                                            </p>
+                                            <p>
+                                                <b>1. Example:</b> <span class="text-danger">,server badwords off</span>
+                                                <b>2. Example:</b> <span class="text-danger">,server badwords on</span>
+                                                <b>3. Example:</b> <span class="text-danger">,server emotes off</span>
+                                                <b>4. Example:</b> <span class="text-danger">,server emotes on</span>
+                                                <b>5. Example:</b> <span class="text-danger">,server links off</span>
+                                                <b>6. Example:</b> <span class="text-danger">,server links on</span>
+                                                <b>7. Example:</b> <span class="text-danger">,server currency off</span>
+                                                <b>8. Example:</b> <span class="text-danger">,server currency on</span>
+                                                <b>9. Example:</b> <span class="text-danger">,server waction1 ban</span>
+                                                <b>10. Example:</b> <span class="text-danger">,server waction1
+                                                    kick</span>
+                                                <b>11. Example:</b> <span class="text-danger">,server waction1
+                                                    mute</span>
+                                                <b>12. Example:</b> <span class="text-danger">,server waction2
+                                                    ban</span>
+                                                <b>13. Example:</b> <span class="text-danger">,server waction2
+                                                    kick</span>
+                                                <b>14. Example:</b> <span class="text-danger">,server waction2
+                                                    mute</span>
+                                                <b>15. Example:</b> <span class="text-danger">,server waction3
+                                                    ban</span>
+                                                <b>16. Example:</b> <span class="text-danger">,server waction3
+                                                    kick</span>
+                                                <b>17. Example:</b> <span class="text-danger">,server waction3
+                                                    mute</span>
+                                                <b>18. Example:</b> <span class="text-danger">,server wamount1
+                                                    30m</span>
+                                                <b>19. Example:</b> <span class="text-danger">,server wamount2 1h</span>
+                                                <b>20. Example:</b> <span class="text-danger">,server wamount3 1d</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="user">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fuser"> ,user </button>
+                                    </h2>
+                                    <div id="fuser" class="accordion-collapse collapse" data-bs-parent="#user">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Displays the user
+                                                    settings.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,user</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="notepad">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fnotepad"> ,notepad </button>
+                                    </h2>
+                                    <div id="fnotepad" class="accordion-collapse collapse" data-bs-parent="#notepad">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Sends the message that
+                                                    the
+                                                    user has typed into the notepad.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,notepad {write/get}
+                                                    (message)</span>
+                                            </p>
+                                            <p>
+                                                <b>1. Example:</b> <span class="text-danger">,notepad write hello
+                                                    world!</span>
+                                                <b>2. Example:</b> <span class="text-danger">,notepad get</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commands-section" id="Category6">
+                            <!-- Slash commands -->
+                            <div class="accordion accordion-flush mt-2" id="playslcmd">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fplayslcmd"> /play </button>
+                                    </h2>
+                                    <div id="fplayslcmd" class="accordion-collapse collapse"
+                                        data-bs-parent="#playslcmd">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">This command allows you
+                                                    to
+                                                    play a song.</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">/play [Song name/URL]</span>
+                                            </p>
+                                            <p>
+                                                <b>Example:</b> <span class="text-danger">/play Billie Jean by Micheal
+                                                    Jackson</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="lyricsslcmd">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#flyricsslcmd"> /lyrics </button>
+                                    </h2>
+                                    <div id="flyricsslcmd" class="accordion-collapse collapse"
+                                        data-bs-parent="#lyricsslcmd">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Get the lyrics for the
+                                                    playing/requested song title.</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">/lyrics [title] [author]</span>
+                                            </p>
+                                            <p>
+                                                <b>Example:</b> <span class="text-danger">/lyrics Never gonna give you
+                                                    up
+                                                    Rick Ashley</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="skipslcmd">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fskipslcmd"> /skip </button>
+                                    </h2>
+                                    <div id="fskipslcmd" class="accordion-collapse collapse"
+                                        data-bs-parent="#skipslcmd">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">This command allows you
+                                                    to
+                                                    skip a song.</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">/skip</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="backslcmd">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fbackslcmd"> /back </button>
+                                    </h2>
+                                    <div id="fbackslcmd" class="accordion-collapse collapse"
+                                        data-bs-parent="#backslcmd">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">This command allows you
+                                                    to
+                                                    play a song that already played.</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">/back</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commands-section" id="Category7">
+                            <!-- Others -->
+                            <div class="accordion accordion-flush mt-2" id="help">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fhelp"> ,help </button>
+                                    </h2>
+                                    <div id="fhelp" class="accordion-collapse collapse" data-bs-parent="#help">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Sends a link to this
+                                                    page.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,help</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="invite">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#finvite"> ,invite </button>
+                                    </h2>
+                                    <div id="finvite" class="accordion-collapse collapse" data-bs-parent="#invite">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Important links to the
+                                                    bot.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,invite</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="stats">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fstats"> ,stats </button>
+                                    </h2>
+                                    <div id="fstats" class="accordion-collapse collapse" data-bs-parent="#stats">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">Shows the bot's
+                                                    stats.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,stats</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion accordion-flush mt-2" id="changelog">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#fchangelog"> ,changelog </button>
+                                    </h2>
+                                    <div id="fchangelog" class="accordion-collapse collapse"
+                                        data-bs-parent="#changelog">
+                                        <div class="accordion-body rounded">
+                                            <p>
+                                                <b>Description:</b> <span class="text-warning">To allow users the
+                                                    following
+                                                    changes added towards the bot and what has happened to it.</span>
+                                            </p>
+                                            <p>
+                                                <b>Cooldown:</b> <span class="text-success">4s</span>
+                                                <b>Voted cooldown:</b> <span class="text-success">1s</span>
+                                            </p>
+                                            <p>
+                                                <b>Usage:</b> <span class="text-danger">,changelog</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+        <%- include('../partials/footer.ejs') %>
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P54VCBX" height="0" width="0"
+                    style="display:none;visibility:hidden"></iframe></noscript>
+    </body>
+    <% if (loggedIn && developer) { %>
+        <script>
+            function active(elm) {
+                document.getElementById("CategoryBtnAll").classList.remove("active");
+
+                document.getElementById("CategoryBtn0").classList.remove("active");
+                document.getElementById("Category0").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn1").classList.remove("active");
+                document.getElementById("Category1").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn2").classList.remove("active");
+                document.getElementById("Category2").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn3").classList.remove("active");
+                document.getElementById("Category3").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn4").classList.remove("active");
+                document.getElementById("Category4").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn5").classList.remove("active");
+                document.getElementById("Category5").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn6").classList.remove("active");
+                document.getElementById("Category6").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtn7").classList.remove("active");
+                document.getElementById("Category7").setAttribute("hidden", "");
+
+                document.getElementById("CategoryBtnDev").classList.remove("active");
+                document.getElementById("CategoryDev").setAttribute("hidden", "");
+
+                elm.classList.add("active");
+                if (elm.id.replace("CategoryBtn", "") == "All") {
+
+                    document.getElementById("Category0").removeAttribute("hidden");
+
+                    document.getElementById("Category1").removeAttribute("hidden");
+
+                    document.getElementById("Category2").removeAttribute("hidden");
+
+                    document.getElementById("Category3").removeAttribute("hidden");
+
+                    document.getElementById("Category4").removeAttribute("hidden");
+
+                    document.getElementById("Category5").removeAttribute("hidden");
+
+                    document.getElementById("Category6").removeAttribute("hidden");
+
+                    document.getElementById("Category7").removeAttribute("hidden");
+
+                    document.getElementById("CategoryDev").removeAttribute("hidden");
+
+                } else {
+                    document.getElementById("Category" + elm.id.replace("CategoryBtn", "")).removeAttribute("hidden");
+                }
+            }
+            document.getElementById("CategoryBtnAll").click();
+        </script>
+        <% } else { %>
+            <script>
+                function active(elm) {
+                    document.getElementById("CategoryBtnAll").classList.remove("active");
+
+                    document.getElementById("CategoryBtn0").classList.remove("active");
+                    document.getElementById("Category0").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn1").classList.remove("active");
+                    document.getElementById("Category1").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn2").classList.remove("active");
+                    document.getElementById("Category2").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn3").classList.remove("active");
+                    document.getElementById("Category3").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn4").classList.remove("active");
+                    document.getElementById("Category4").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn5").classList.remove("active");
+                    document.getElementById("Category5").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn6").classList.remove("active");
+                    document.getElementById("Category6").setAttribute("hidden", "");
+
+                    document.getElementById("CategoryBtn7").classList.remove("active");
+                    document.getElementById("Category7").setAttribute("hidden", "");
+
+                    elm.classList.add("active");
+                    if (elm.id.replace("CategoryBtn", "") == "All") {
+
+                        document.getElementById("Category0").removeAttribute("hidden");
+
+                        document.getElementById("Category1").removeAttribute("hidden");
+
+                        document.getElementById("Category2").removeAttribute("hidden");
+
+                        document.getElementById("Category3").removeAttribute("hidden");
+
+                        document.getElementById("Category4").removeAttribute("hidden");
+
+                        document.getElementById("Category5").removeAttribute("hidden");
+
+                        document.getElementById("Category6").removeAttribute("hidden");
+
+                        document.getElementById("Category7").removeAttribute("hidden");
+
+                    } else {
+                        document.getElementById("Category" + elm.id.replace("CategoryBtn", "")).removeAttribute("hidden");
+                    }
+                }
+                document.getElementById("CategoryBtnAll").click();
+            </script>
+            <% } %>
+                <script src="../assets/javascript/headertab.js"></script>
+                <script src="https://unpkg.com/scrollreveal"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+                    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+                    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</html>

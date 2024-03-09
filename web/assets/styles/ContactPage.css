@@ -1,0 +1,36 @@
+.card {
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 540px;
+    transition: 0.3s;
+}
+
+.card-columns {
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+@media (min-width: 780px) {
+    .card {
+        top: 130px;
+    }
+}
+
+@media (max-width: 780px) {
+    .card {
+        top: 120px;
+    }
+}
+
+@media (max-width: 239px) {
+    .card {
+        top: 160px;
+    }
+}
+
+@media (max-width: 137px) {
+    .card {
+        top: 190px;
+    }
+}

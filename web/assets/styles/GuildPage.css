@@ -1,0 +1,22 @@
+@media (min-width: 1000) {
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+    }
+}
+
+.card {
+    opacity: 75%;
+    width: 290px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+@media (max-width: 991px) {
+    .card {
+        opacity: 75%;
+        max-width: 240px;
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-P54VCBX');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="Draid">
+    <meta name="language" content="EN, PL">
+    <meta name="author" content="ItsMateo20, itsmateo20@gmail.com and Waret, draidbusiness@gmail.com">
+    <meta name="owner" content="ItsMateo20">
+    <meta name="designer" content="ItsMateo20">
+    <title>
+      <%= body[0] %>
+    </title>
+    <link rel="icon" href="../assets/images/AdminPanelLogo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <%- include('../partials/header.ejs') %>
+        <div class="headerText">
+          <h1 style="font-size: 50px;">
+            Admin panel
+          </h1>
+          <p style="font-size: 20px;">
+            Welcome to the admin panel. Here you can edit users and servers data!
+          </p>
+          <% if (errormsg!==false ) { %>
+            <h5 class="text-danger" style="font-size: 15px;">
+              <%= errormsg %>
+            </h5>
+            <% } %>
+        </div>
+        <div class="divider"></div>
+        <form id="SendNewData" action="/adminpanel" method="POST">
+          <% if (selectedData==false) { %>
+            <div style="max-width: 400px;" class="card centerB mt-5">
+              <div class="card-body">
+                <h5 class="card-title">Select data</h5>
+                <p class="card-text">
+                  <select class="form-select" id="dbtype" name="dbtype">
+                    <option selected>Select data</option>
+                    <option value="user">User</option>
+                    <option value="server">Guild</option>
+                    <option value="serveruser">GuildUser</option>
+                  </select>
+                </p>
+                <p>
+                  <input class="form-control" id="dbid" name="dbid" placeholder="GuildID" value="">
+                  <input class="form-control" id="dbid2" name="dbid2" placeholder="UserID" value="">
+                </p>
+                <input id="check" type="button" class="btn btn-outline-danger" onclick="SendData()"
+                  value="Check data" />
+              </div>
+            </div>
+            <% } else if (selectedData==true) { %>
+              <input type="hidden" id="back" name="back" value="true">
+              <% if (selectedDataType=="user" ) { %>
+                <div class="text-center">
+                  <p>Currently viewing <%= userData.userID %> user data - <input id="back" type="button"
+                        class="btn btn-outline-danger" onclick="SendData()" value="Back" /></p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 g-2">
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Database</h5>
+                        <div class="code"><code style="color: #5f6996;"><%= userData %></code></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } else if (selectedDataType=="server" ) {%>
+                  <div class="text-center">
+                    <p>Currently viewing <%= serverData.guildID %> guild data - <input id="back" type="button"
+                          class="btn btn-outline-danger" onclick="SendData()" value="Back" /></p>
+
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Database</h5>
+                          <div class="code"><code style="color: #5f6996;"><%= serverData %></code></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class=" col">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% } else if (selectedDataType=="serveruser" ) { %>
+                    <div class="text-center">
+                      <p>Currently viewing <%= serverData.guildId %>|<%= userData.userID %> guild user data - <input
+                              id="back" type="button" class="btn btn-outline-danger" onclick="SendData()"
+                              value="Back" />
+                      </p>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 g-2">
+                      <div class="col">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Database</h5>
+                            <div class="code"><code style="color: #5f6996;"><%= serveruserData %></code></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class=" col">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                      <% } %>
+        </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P54VCBX" height="0" width="0"
+          style="display:none;visibility:hidden"></iframe></noscript>
+  </body>
+
+  <script>
+    const inputs = document.querySelectorAll("input, select, option");
+    for (const el of inputs) {
+      el.oldValue = el.value + el.checked;
+    }
+
+    var setEnabled;
+    (setEnabled = function () {
+      var e = true;
+      for (const el of inputs) {
+        if (el.oldValue != el.value + el.checked) {
+          e = false;
+          break;
+        }
+      }
+      document.getElementById("check").disabled = e;
+    })();
+
+    document.oninput = setEnabled;
+    document.onchange = setEnabled; 
+  </script>
+
+  <script>
+    function SendData() {
+      document.getElementById("SendNewData").submit();
+    }
+  </script>
+  <script src="../assets/javascript/headertab.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+</html>
